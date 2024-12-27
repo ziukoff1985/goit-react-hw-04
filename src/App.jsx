@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import axios from 'axios';
+import { Toaster } from 'react-hot-toast';
+import './App.css';
+import SearchBar from './components/SearchBar/SearchBar';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [images, setImages] = useState([]);
+
+  const handleFetch = async query => {
+    try {
+      const response = await axios.get(
+        'https://api.unsplash.com/search/photos',
+        {
+          params: { query, per_page: 12 },
+          headers: {
+            Authorization:
+              'Client-ID WEdozSbeL3sXHgKKf2QSFIABrvu5qfELDXJLSJNUh8Q',
+          },
+        }
+      );
+      setImages(response.data.results);
+      console.log(response.data.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // const handleFetch = query => {
+  //   console.log('Search query:', query);
+  // };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <SearchBar onSubmit={handleFetch} />
+      <Toaster position="top-right" reverseOrder={false} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
