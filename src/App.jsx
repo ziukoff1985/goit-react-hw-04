@@ -17,13 +17,18 @@ function App() {
   const [page, setPage] = useState(1);
   const [modalImage, setModalImage] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [noResults, setNoResults] = useState(false);
 
   useEffect(() => {
     const fetchImagesData = async () => {
       setIsLoading(true);
       setIsError(false);
+      setNoResults(false);
       try {
         const results = await fetchImages(query, page);
+        if (results.length === 0) {
+          setNoResults(true);
+        }
         setImages(prevImages => [...prevImages, ...results]);
       } catch (error) {
         setIsError(true);
@@ -62,6 +67,7 @@ function App() {
       )}
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
+      {noResults && <div>No images found for your query. Try again...</div>}
       {images.length > 0 && <LoadMoreBtn onClick={handleLoadMore} />}
       <ImageModal
         isOpen={isModalOpen}
