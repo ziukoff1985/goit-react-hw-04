@@ -8,8 +8,8 @@ const ImageModal = ({ isOpen, onRequestClose, image }) => {
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose} // Закриття при ESC або кліку поза модалкою
-      className={styles.modalContent} // Стилізація модального контенту
-      overlayClassName={styles.modalOverlay} // Стилізація бекдропу
+      className={styles.modalContent}
+      overlayClassName={styles.modalOverlay}
     >
       {image && (
         <img src={image} alt="Large preview" className={styles.modalImage} />

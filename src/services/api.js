@@ -10,9 +10,6 @@ export const fetchImages = async (query, page, perPage = 12) => {
       Authorization: `Client-ID ${API_KEY}`,
     },
   });
-  console.log(response);
-  console.log('Response data:', response.data);
-  console.log('Results:', response.data.results);
 
   return response.data.results;
 };

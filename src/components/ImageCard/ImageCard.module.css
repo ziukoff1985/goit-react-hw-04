@@ -7,7 +7,7 @@
   transition: box-shadow 0.5s ease, transform 0.3s ease;
   overflow: hidden;
   background-color: #fff;
-  max-width: 100%; /* обмежує максимальну ширину картки */
+  max-width: 100%; 
 }
 
 .card:hover {
@@ -18,7 +18,7 @@
 
 .imageWrap {
   width: 100%;
-  aspect-ratio: 16 / 9; /* Пропорції */
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .descriptionText {
-  overflow: hidden; /* Ховає текст, що виходить за межі контейнера */
+  overflow: hidden;
   white-space: nowrap; /* Забороняє перенос тексту на новий рядок */
   text-overflow: ellipsis; /* Додає три крапки (...) */
   width: 270px;

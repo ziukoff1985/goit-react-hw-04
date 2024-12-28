@@ -3,15 +3,15 @@
 }
 
 .button {
-  padding: 5px 10px; /* Відступи всередині кнопки */
-  background-color: #007bff; /* Синій фон */
-  color: white; /* Білий текст */
-  border: none; /* Без рамки */
-  border-radius: 4px; /* Згладжені кути */
-  cursor: pointer; /* Зміна курсора при наведенні */
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
   font-size: 24px;
 }
 
 .button:hover {
-  background-color: #0056b3; /* Темніший синій при наведенні */
+  background-color: #0056b3;
 }

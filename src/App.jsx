@@ -47,7 +47,7 @@ function App() {
     setPage(prevPage => prevPage + 1);
   };
 
-  // Додаємо функцію для відкриття модального вікна
+  // Функція для відкриття модального вікна
   const handleImageClick = imageUrl => {
     setModalImage(imageUrl);
     setIsModalOpen(true);

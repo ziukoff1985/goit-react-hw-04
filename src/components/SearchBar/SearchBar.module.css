@@ -1,40 +1,36 @@
-/* Стилі для header */
 .header {
-  position: fixed; /* Фіксуємо header у верхній частині */
-  top: 0; /* Відступ від верхнього краю екрана */
-  left: 0; /* Вирівнювання по лівому краю */
-  width: 100%; /* Розтягування header на всю ширину екрана */
-  background-color: #f5f5f5; /* Світло-сірий фон */
-  padding: 10px; /* Внутрішній відступ */
-  text-align: center; /* Вирівнювання вмісту по центру */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тінь для візуального розмежування */
-  z-index: 1000; /* Розташування над іншими елементами */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
-/* Стилі для форми */
 .form {
-  display: inline-block; /* Центрування форми */
+  display: inline-block;
 }
 
-/* Стилі для інпуту */
 .input {
-  padding: 5px; /* Відступи всередині інпуту */
-  width: 300px; /* Фіксована ширина */
-  border: 1px solid #ccc; /* Сірий бордер */
-  border-radius: 4px; /* Згладжені кути */
+  padding: 5px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-/* Стилі для кнопки */
 .button {
-  margin-left: 10px; /* Відступ між кнопкою і полем вводу */
-  padding: 5px 10px; /* Відступи всередині кнопки */
-  background-color: #007bff; /* Синій фон */
-  color: white; /* Білий текст */
-  border: none; /* Без рамки */
-  border-radius: 4px; /* Згладжені кути */
-  cursor: pointer; /* Зміна курсора при наведенні */
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .button:hover {
-  background-color: #0056b3; /* Темніший синій при наведенні */
+  background-color: #0056b3;
 }
