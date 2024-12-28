@@ -1,34 +1,19 @@
-import { useEffect } from 'react';
 import Modal from 'react-modal';
 import styles from './ImageModal.module.css';
 
-Modal.setAppElement('#root'); // Це важливо для доступності!
+Modal.setAppElement('#root'); // Додаємо елемент застосунку для доступності
 
-const ImageModal = ({ isOpen, onClose, imageUrl, altText }) => {
-  useEffect(() => {
-    const handleEsc = e => {
-      if (e.key === 'Escape') {
-        onClose(); // Закриваємо модальне вікно при натисканні Esc
-      }
-    };
-
-    document.addEventListener('keydown', handleEsc);
-
-    return () => {
-      document.removeEventListener('keydown', handleEsc);
-    };
-  }, [onClose]);
-
+const ImageModal = ({ isOpen, onRequestClose, image }) => {
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={onClose}
-      className={styles.modalContent}
-      overlayClassName={styles.overlay}
+      onRequestClose={onRequestClose} // Закриття при ESC або кліку поза модалкою
+      className={styles.modalContent} // Стилізація модального контенту
+      overlayClassName={styles.modalOverlay} // Стилізація бекдропу
     >
-      <div className={styles.modalWrapper} onClick={onClose}>
-        <img src={imageUrl} alt={altText} className={styles.modalImage} />
-      </div>
+      {image && (
+        <img src={image} alt="Large preview" className={styles.modalImage} />
+      )}
     </Modal>
   );
 };

@@ -47,14 +47,10 @@ function App() {
     setPage(prevPage => prevPage + 1);
   };
 
-  const openModal = imageUrl => {
+  // Додаємо функцію для відкриття модального вікна
+  const handleImageClick = imageUrl => {
     setModalImage(imageUrl);
     setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setModalImage('');
   };
 
   return (
@@ -62,16 +58,15 @@ function App() {
       <SearchBar onSubmit={handleSearchSubmit} />
       <Toaster position="top-right" reverseOrder={false} />
       {images.length > 0 && (
-        <ImageGallery images={images} openModal={openModal} />
+        <ImageGallery images={images} onImageClick={handleImageClick} />
       )}
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
       {images.length > 0 && <LoadMoreBtn onClick={handleLoadMore} />}
       <ImageModal
         isOpen={isModalOpen}
-        onClose={closeModal}
-        imageUrl={modalImage}
-        altText="Modal Image"
+        onRequestClose={() => setIsModalOpen(false)}
+        image={modalImage}
       />
     </>
   );
