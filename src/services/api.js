@@ -11,5 +11,7 @@ export const fetchImages = async (query, page, perPage = 12) => {
     },
   });
 
-  return response.data.results;
+  console.log(response);
+
+  return response.data;
 };

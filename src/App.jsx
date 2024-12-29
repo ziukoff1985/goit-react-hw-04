@@ -1,5 +1,5 @@
 import './App.css';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import { fetchImages } from './services/api';
 import Loader from './components/Loader/Loader';
@@ -8,6 +8,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import ImageModal from './components/ImageModal/ImageModal';
+import ErrorNotification from './components/NoResultsNotification/NoResultsNotification';
 
 function App() {
   const [query, setQuery] = useState('');
@@ -18,18 +19,26 @@ function App() {
   const [modalImage, setModalImage] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [noResults, setNoResults] = useState(false);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     const fetchImagesData = async () => {
       setIsLoading(true);
       setIsError(false);
       setNoResults(false);
+      setTotalPages(0);
       try {
-        const results = await fetchImages(query, page);
+        const { results, total_pages } = await fetchImages(query, page);
         if (results.length === 0) {
           setNoResults(true);
         }
         setImages(prevImages => [...prevImages, ...results]);
+        setTotalPages(total_pages);
+
+        // Якщо ми на останній сторінці, вивести повідомлення
+        if (page === total_pages) {
+          toast.error('Oops, this is the last page😒');
+        }
       } catch (error) {
         setIsError(true);
         console.log(error);
@@ -49,7 +58,9 @@ function App() {
   };
 
   const handleLoadMore = () => {
-    setPage(prevPage => prevPage + 1);
+    if (page < totalPages) {
+      setPage(prevPage => prevPage + 1);
+    }
   };
 
   // Функція для відкриття модального вікна
@@ -67,8 +78,10 @@ function App() {
       )}
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
-      {noResults && <div>No images found for your query. Try again...</div>}
-      {images.length > 0 && <LoadMoreBtn onClick={handleLoadMore} />}
+      {noResults && <ErrorNotification />}
+      {images.length > 0 && page < totalPages && (
+        <LoadMoreBtn onClick={handleLoadMore} />
+      )}
       <ImageModal
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}

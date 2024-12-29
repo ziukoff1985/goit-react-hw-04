@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react';
 import toast from 'react-hot-toast';
 
-const ErrorMessage = () => {
+const ErrorNotification = () => {
   const hasToastShown = useRef(false); // Зберігаємо стан виклику toast
 
   useEffect(() => {
     if (!hasToastShown.current) {
-      toast.error('Something went wrong. Please try again...');
+      toast.error('No images found for your query. Try again...');
       hasToastShown.current = true; // Встановлюємо прапорець
     }
   }, []);
@@ -14,4 +14,4 @@ const ErrorMessage = () => {
   return null; // Нічого не рендеримо
 };
 
-export default ErrorMessage;
+export default ErrorNotification;
