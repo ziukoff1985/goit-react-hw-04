@@ -37,7 +37,7 @@ function App() {
 
         // Якщо ми на останній сторінці, вивести повідомлення
         if (page === total_pages) {
-          toast.error('Oops, this is the last page😒');
+          toast.error('Oops, this is the last page 🤷‍♂️');
         }
       } catch (error) {
         setIsError(true);

@@ -6,7 +6,7 @@ const ErrorMessage = () => {
 
   useEffect(() => {
     if (!hasToastShown.current) {
-      toast.error('Something went wrong. Please try again...');
+      toast.error('Something went wrong 🤦‍♂️, try again...');
       hasToastShown.current = true; // Встановлюємо прапорець
     }
   }, []);

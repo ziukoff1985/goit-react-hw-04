@@ -6,7 +6,7 @@ const ErrorNotification = () => {
 
   useEffect(() => {
     if (!hasToastShown.current) {
-      toast.error('No images found for your query. Try again...');
+      toast.error('No images found for your query 🤷‍♂️');
       hasToastShown.current = true; // Встановлюємо прапорець
     }
   }, []);
