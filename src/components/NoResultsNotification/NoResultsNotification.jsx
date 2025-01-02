@@ -7,7 +7,7 @@ import toast from 'react-hot-toast'; // Імпорт бібліотеки react-
 // - message: потрібен на випадок, якщо потрібно (на майбутнє) відображати різні повідомлення
 // - message може бути змінений для відображення різних повідомлень в майбутньому
 const ErrorNotification = ({ message }) => {
-  // Використовує useRef для збереження стану, чи вже було показано тост
+  // Використовує useRef для збереження стану, чи вже було показано повідомлення
   // hasToastShown.current ініціалізується як false
   const hasToastShown = useRef(false);
 
