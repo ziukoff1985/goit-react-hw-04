@@ -1,0 +1,14 @@
+.typingTextWrap {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  margin-top: 20vh;
+}
+
+.h1 {
+  text-decoration: underline white;
+}
+
+.typingEffect span {
+  font-size: 48px; /* Збільшуємо розмір курсора */
+  color: white;
+}

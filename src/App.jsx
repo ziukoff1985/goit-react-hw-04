@@ -9,6 +9,7 @@ import ErrorMessage from './components/ErrorMessage/ErrorMessage'; // Компо
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn'; // Кнопка для завантаження додаткових сторінок
 import ImageModal from './components/ImageModal/ImageModal'; // Модальне вікно для перегляду зображень
 import ErrorNotification from './components/NoResultsNotification/NoResultsNotification'; // Повідомлення "нічого не знайдено"
+import TypingEffectMessage from './components/TypingEffectMessage/TypingEffectMessage'; // Компонент для анімованого (друкованого тексту)
 
 // Головний компонент Арр
 function App() {
@@ -22,6 +23,7 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false); // Стан для контролю відкриття/закриття модального вікна
   const [isNoResults, setIsNoResults] = useState(false); // Стан для відображення повідомлення "нічого не знайдено"
   const [totalPages, setTotalPages] = useState(0); // Стан для загальної кількості сторінок, отриманих з API
+  const [typingMessage, setTypingMessage] = useState(true); // Стан для анімованого тексту (з ефектом друку)
 
   // useEffect для запиту зображень з API при зміні станів `query` або `page`
   useEffect(() => {
@@ -31,6 +33,7 @@ function App() {
       setIsError(false); // Скидаємо помилку, якщо вона була
       setIsNoResults(false); // Скидаємо стан "немає результатів" в false
       setTotalPages(0); // Скидаємо кількість сторінок на початкове значення
+      setTypingMessage(false); // Xоваємо анімований текст
 
       // Блок try...catch для відправки запиту
       try {
@@ -39,6 +42,7 @@ function App() {
         // Якщо запит не дав результатів, активуємо повідомлення "нічого не знайдено"
         if (results.length === 0) {
           setIsNoResults(true); // Встановлюємо стан "немає результатів" в true
+          setTypingMessage(true); // Показуємо анімований текст з повідомленням
         }
         // Додаємо нові результати до існуючих (під час пагінації) - через prev
         setImages(prevImages => [...prevImages, ...results]);
@@ -90,6 +94,8 @@ function App() {
       <SearchBar onSubmit={handleSearchSubmit} />
       {/* Компонент для відображення повідомлень (react-hot-toast) */}
       <Toaster position="top-right" reverseOrder={false} />
+      {/* Анімований текст (на головній сторінці) */}
+      {typingMessage && <TypingEffectMessage />}
       {/* Галерея зображень */}
       {images.length > 0 && (
         <ImageGallery images={images} onImageClick={handleImageClick} />

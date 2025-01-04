@@ -17,7 +17,7 @@ const LoadMoreBtn = ({ onClick }) => {
         className={styles.button}
         aria-label="Load more items"
       >
-        Load More
+        <span>Load More</span>
       </button>
     </div>
   );
