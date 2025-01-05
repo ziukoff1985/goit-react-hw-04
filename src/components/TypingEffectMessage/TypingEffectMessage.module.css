@@ -7,10 +7,9 @@
 
 .h1 {
   text-transform: uppercase;
-  color: yellow;
 }
 
 .typingEffect span {
-  font-size: 54px; /* Збільшуємо розмір курсора */
+  font-size: 44px; /* Збільшуємо розмір курсора */
   color: rgb(255, 255, 255);
 }
