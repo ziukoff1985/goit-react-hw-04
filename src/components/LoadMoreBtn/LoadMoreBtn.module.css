@@ -16,6 +16,7 @@
   background-color: #0056b3;
 } */
 .button {
+  font-family: 'IBM Plex Mono', serif;
   position: relative;
   margin: 30px auto 10px;
   padding: 10px 20px; /* Простір навколо тексту та іконки */
@@ -44,9 +45,13 @@
   z-index: -1;
 }
 
+.button:hover {
+  border: 3px solid white;
+}
+
 .button:hover:before {
   width: 100%; /* Розтягується на всю ширину кнопки при наведенні */
-  background: rgba(248, 244, 10, 0.7); /* Насичений рожевий */
+  background: rgba(56, 182, 255, 0.5); /* Насичений рожевий */
 }
 
 .button span {

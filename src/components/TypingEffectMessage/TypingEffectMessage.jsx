@@ -1,10 +1,13 @@
 import styles from './TypingEffectMessage.module.css';
-import TypingEffect from 'react-typing-effect';
+import TypingEffect from 'react-typing-effect'; // Імпортуємо компонент TypingEffect з бібліотеки react-typing-effect
 
+// Створюємо функціональний компонент TypingEffectMessage
 const TypingEffectMessage = () => {
   return (
+    // Обгортаємо компонент у div
     <div className={styles.typingTextWrap}>
       <TypingEffect
+        // Масив текстових рядків, які будуть поступово друкуватися
         text={[
           'Find the Perfect Image in a Snap...',
           'Discover. Explore. Inspire.',
@@ -15,15 +18,21 @@ const TypingEffectMessage = () => {
         eraseSpeed={100} // Швидкість стирання (в мс), якщо потрібно
         typingDelay={0} // Затримка перед друкуванням
         className={styles.typingEffect}
+        // Функція для кастомного рендерингу тексту
         displayTextRenderer={text => (
+          // Заголовок h1 для виведення тексту
           <h1 className={styles.h1}>
+            {/* Розбиваємо текст на окремі символи і рендеримо кожен символ */}
             {text.split('').map((char, index) => (
               <span
-                key={index}
+                key={index} // Унікальний ключ для кожного символу
+                // Задаємо стиль для кожного символу
+                // Якщо індекс парний - один колір, непарний - інший
                 style={
-                  index % 2 === 0 ? { color: 'white' } : { color: 'white' }
+                  index % 2 === 0 ? { color: 'yellow' } : { color: 'yellow' }
                 }
               >
+                {/* Виводимо символ */}
                 {char}
               </span>
             ))}
