@@ -16,7 +16,7 @@ export const fetchImages = async (query, page, perPage = 12) => {
   // Виконуємо GET-запит до API Unsplash
   const response = await axios.get(BASE_URL, {
     // Параметри запиту: пошуковий запит, номер сторінки, кількість зображень на сторінці
-    params: { query, page, per_page: perPage },
+    params: { query: query, page: page, per_page: perPage },
     // Заголовки для авторизації через API-ключ
     headers: {
       // API-ключ для авторизації запиту
