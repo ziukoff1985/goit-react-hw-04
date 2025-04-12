@@ -44,7 +44,7 @@ function App() {
           setIsNoResults(true); // Встановлюємо стан "немає результатів" в true
           setTypingMessage(true); // Показуємо анімований текст з повідомленням
         }
-        // Додаємо нові результати до існуючих (під час пагінації) - через prev
+        // Додаємо нові результати до існуючих -> не заміна попередніх, а саме додавання нових (під час пагінації) - через prev
         setImages(prevImages => [...prevImages, ...results]);
         setTotalPages(total_pages); // Оновлюємо загальну кількість сторінок
 
@@ -65,7 +65,7 @@ function App() {
     if (query) {
       fetchImagesData(); // Тільки в цьому разу викликаємо функцію запиту на АРІ (fetchImagesData)
     }
-  }, [query, page]); // Масив злежностей - useEffect слідкує за зміною станів "query" і "page"
+  }, [query, page]); // Масив злежностей - useEffect слідкує за зміною станів (змінних) "query" і "page"
 
   // Функція яка запускається при відправці ключового запиту (Submit форми в файлі SearchBar.jsx)
   const handleSearchSubmit = newQuery => {
