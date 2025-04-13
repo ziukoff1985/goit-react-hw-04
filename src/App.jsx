@@ -35,7 +35,7 @@ function App() {
       setTotalPages(0); // Скидаємо кількість сторінок на початкове значення
       setTypingMessage(false); // Xоваємо анімований текст
 
-      // Блок try...catch для відправки запиту
+      // Блок try...catch -> для відправки запиту
       try {
         // Отримуємо результати запиту та загальну кількість сторінок
         const { results, total_pages } = await fetchImages(query, page);
